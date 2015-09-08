@@ -20,7 +20,6 @@ namespace WeatherAppDesktop
         public MailAddress from;
         public MailAddress to;
         public NetworkCredential credentials;
-        public Cities сities = new Cities();
         Weather wr;
 
         public MainWindow()
@@ -42,10 +41,10 @@ namespace WeatherAppDesktop
                 ShowInfo sg = new ShowInfo("Ошибка", ex.ToString());
                 sg.ShowDialog();
             }
-            
+
         }
 
-        public void CloseWindow ()
+        public void CloseWindow()
         {
             this.Close();
         }
@@ -60,7 +59,7 @@ namespace WeatherAppDesktop
         //    }
         //}
 
-        public void SetWeatherData (Weather wr)
+        public void SetWeatherData(Weather wr)
         {
             LbWindCityName.Content = wr.City + " " + wr.Country;
             DataBox.LbState.Content = String.Format("Состояние: {0} ", wr.Sky);
@@ -90,7 +89,7 @@ namespace WeatherAppDesktop
                 country = location.Substring(comaIndex + 1);
                 city = location.Remove(comaIndex);
 
-                City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
+                City cityFound = Cities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
 
                 wtp.GetWeatherById(cityFound._id);
 
@@ -102,7 +101,7 @@ namespace WeatherAppDesktop
         {
             try
             {
-                if(System.IO.File.Exists("userSettings.xml"))
+                if (System.IO.File.Exists("userSettings.xml"))
                 {
                     var path = "userSettings.xml";
                     XDocument doc = XDocument.Load(path);
@@ -145,7 +144,7 @@ namespace WeatherAppDesktop
                     else
                         settingsflyout.CbNotifications.IsChecked = false;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -153,21 +152,46 @@ namespace WeatherAppDesktop
             }
         }
 
+        //void ShowMap(string location)
+        //{
+        //    string city, country;
+        //    int comaIndex = location.IndexOf(' ');
+        //    country = location.Substring(comaIndex + 1);
+        //    city = location.Remove(comaIndex);
+
+        //    City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
+
+        //    var lat = Convert.ToInt32(cityFound.coord.lat);
+        //    var lon = Convert.ToInt32(cityFound.coord.lon);
+        //    string uri = "http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF";
+        //    webbrawser.brawser.Navigate(uri);
+        //}
+
         void ShowMap(string location)
         {
-            string city, country;
-            int comaIndex = location.IndexOf(' ');
-            country = location.Substring(comaIndex + 1);
-            city = location.Remove(comaIndex);
+            try
+            {
+                string city, country;
+                int comaIndex = location.IndexOf(' ');
+                country = location.Substring(comaIndex + 1);
+                city = location.Remove(comaIndex);
 
-            City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
+                City cityFound = Cities.CityList.First<City>(c => c.name == city | c.country == country);
+                MessageBox.Show(cityFound.name + " " + cityFound.country);
+                var lat = Convert.ToInt32(cityFound.coord.lat);
+                var lon = Convert.ToInt32(cityFound.coord.lon);
 
-            var lat = Convert.ToInt32(cityFound.coord.lat);
-            var lon = Convert.ToInt32(cityFound.coord.lon);
-            MessageBox.Show(lat.ToString() + "    " + lon.ToString());
-            string uri = "http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF";
-            webbrawser.brawser.Navigate(uri);
+                MessageBox.Show(lat.ToString() + " " + lon.ToString());
+
+                webbrawser.brawser.Navigate("http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
 
         //Dezign and component window
         #region

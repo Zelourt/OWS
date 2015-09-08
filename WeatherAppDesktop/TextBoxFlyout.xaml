@@ -18,17 +18,17 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <ListBox  Background="#FF007ACC" Name="LboxSearchCities" Height="auto" VerticalAlignment="Bottom" 
-                     BorderThickness="5,0,0,0" BorderBrush="#065B94" MouseLeftButtonUp="LboxSearchCities_MouseLeftButtonDown"/>
+            <ListBox Margin="0,0,0,-2"  Background="#FF007ACC" Name="LboxSearchCities" Height="auto" VerticalAlignment="Bottom" 
+                     BorderThickness="5,0,0,0" BorderBrush="#D2D2D2" MouseLeftButtonUp="LboxSearchCities_MouseLeftButtonDown"/>
         </Grid>
 
-        <Grid Grid.Row="1" Background="#66007ACC">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <!--<ColumnDefinition Width="50"/>-->
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Name="TbCitySearch" Style="{StaticResource TextBoxStyle}" TextChanged="TbCitySearch_TextChanged"/>
+            <TextBox Margin="0,2,0,0" Grid.Column="0" Name="TbCitySearch" Style="{StaticResource TextBoxStyle}" TextChanged="TbCitySearch_TextChanged"/>
         
             <!--<Button Name="btn_searchfortexbox" Click="btn_searchfortexbox_Click" Grid.Column="1" Template="{StaticResource btn_searchMirorflyout}"/>-->
 

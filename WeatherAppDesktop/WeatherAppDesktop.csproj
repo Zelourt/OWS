@@ -173,9 +173,6 @@
     <Resource Include="ResImage\Close_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResImage\background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="ResImage\Res_on.png" />
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResImage\bg_box.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResImage\ясно.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResImage\Logo_bg.png" />
@@ -240,7 +234,10 @@
     <Resource Include="ResImage\alert.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResImage\whitebg.png" />
+    <Resource Include="ResImage\Lines-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResImage\background-world.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

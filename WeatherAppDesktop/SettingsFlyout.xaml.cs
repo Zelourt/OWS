@@ -29,11 +29,9 @@ namespace WeatherAppDesktop
         public int MaxWind;
         Weather wt;
         MainWindow Mw;
-        public Cities сities;
         public SettingsFlyout()
         {
             InitializeComponent();
-            сities = new Cities();
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -148,7 +146,7 @@ namespace WeatherAppDesktop
             LboxSearchCities.Items.Clear();
             if (TboxCityNotification.Text.Length > 3)
             {
-                foreach (var p in сities.CityList)
+                foreach (var p in Cities.CityList)
                 {
                     if (p.name.Contains(TboxCityNotification.Text))
                     {

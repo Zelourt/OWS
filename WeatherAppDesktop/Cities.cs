@@ -9,7 +9,7 @@ namespace WeatherAppDesktop
 {
     public class Cities
     {
-        public List<City> CityList { get; set; }
+        public static List<City> CityList { get; set; }
         StreamReader reader;
 
         public Cities ()

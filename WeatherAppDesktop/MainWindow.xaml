@@ -14,7 +14,7 @@
         Height="450" Width="750" MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="ResImage/iconapp.ico">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="ResImage/whitebg.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="ResImage/background-world.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
 
@@ -63,7 +63,7 @@
         <!--температурная карта-->
         <Grid Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"
               Width="80" Height="80" Margin="10,0,0,10" Grid.ColumnSpan="2">
-            <Border BorderThickness="3" Margin="2" BorderBrush="#66007ACC"/>
+            <Border BorderThickness="3" Margin="2" BorderBrush="#FF007ACC"/>
             <Button Name="btn_map" Click="btn_map_Click" Template="{StaticResource btn_map}" Cursor="Hand"/>
         </Grid>
 

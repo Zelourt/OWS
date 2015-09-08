@@ -22,13 +22,10 @@ namespace WeatherAppDesktop
     public partial class TextBoxFlyout : UserControl
     {
         DoubleAnimation da;
-        Weather wt;
         MainWindow Mw;
-        public Cities сities;
         public TextBoxFlyout()
         {
             InitializeComponent();
-            сities = new Cities();
         }
 
         public void SetMainWnd(MainWindow wnd)
@@ -60,19 +57,19 @@ namespace WeatherAppDesktop
             LboxSearchCities.Items.Clear();
             if (TbCitySearch.Text.Length > 3)
             {
-                //foreach (var p in сities.CityList)
-                //{
-                //    if (p.name.Contains(TbCitySearch.Text))
-                //    {
-                //        if (!LboxSearchCities.Items.Contains(p.name + ", " + p.country))
-                //        {
-                //            LboxSearchCities.Items.Add(p.name + ", " + p.country);
-                //        }
-                //    }
-                //}
+                foreach (var p in Cities.CityList)
+                {
+                    if (p.name.Contains(TbCitySearch.Text))
+                    {
+                        if (!LboxSearchCities.Items.Contains(p.name + ", " + p.country))
+                        {
+                            LboxSearchCities.Items.Add(p.name + ", " + p.country);
+                        }
+                    }
+                }
 
-                сities.CityList.FindAll(item => item.name.IndexOf(TbCitySearch.Text, StringComparison.InvariantCultureIgnoreCase) >= 0)
-                    .ForEach(city => LboxSearchCities.Items.Add(city.name + ", " + city.country));
+                //сities.CityList.FindAll(item => item.name.IndexOf(TbCitySearch.Text, StringComparison.InvariantCultureIgnoreCase) >= 0)
+                //    .ForEach(city => LboxSearchCities.Items.Add(city.name + ", " + city.country));
             }
         }
 
@@ -87,7 +84,7 @@ namespace WeatherAppDesktop
                 country = location.Substring(comaIndex + 1);
                 city = location.Remove(comaIndex);
 
-                City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
+                City cityFound = Cities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
 
                 wtp.GetWeatherById(cityFound._id);
 

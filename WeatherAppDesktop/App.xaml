@@ -321,7 +321,7 @@
 
         <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="#FF007ACC" />
-            <Setter Property="BorderBrush" Value="#065B94" />
+            <Setter Property="BorderBrush" Value="#D2D2D2" />
             <Setter Property="BorderThickness" Value="5,0,0,0" />
             <Setter Property="FontSize" Value="18" />
             <Setter Property="Foreground" Value="White"/>
