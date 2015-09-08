@@ -29,9 +29,11 @@ namespace WeatherAppDesktop
         public int MaxWind;
         Weather wt;
         MainWindow Mw;
+        public Cities сities;
         public SettingsFlyout()
         {
             InitializeComponent();
+            сities = new Cities();
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -46,18 +48,6 @@ namespace WeatherAppDesktop
         private void btn_AddSity_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Sity add");
-        }
-
-        private void slider_temperature_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            
-            int value = Convert.ToInt32(slider_temperature.LowerSlider.Value);
-            slider_temperature.MinValue.Content = String.Format("Min: {0}°C", value.ToString());
-            MinWind = value;
-
-            MaxWind = 70;
-            MaxTemperature = 50;
-            MinWind = 20;
         }
 
         public void WriteSettingsDataXML()

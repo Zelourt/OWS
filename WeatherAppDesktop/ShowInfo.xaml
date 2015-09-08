@@ -13,12 +13,15 @@
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
 
-        <Label Name="LbHeader" Background="#FF007ACC" Style="{StaticResource LabelTemplate}" FontSize="15"/>
+        <Grid Background="#FF007ACC">
+            <Label Name="LbHeader" Style="{StaticResource LabelTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15"/>
+        </Grid>
+        
         <TextBlock Grid.Row="1" FontSize="16" Padding="10"
                    Foreground="White" FontFamily="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro" Name="TbInfo" TextWrapping="Wrap"/>
         <Button Name="btn_ok" Click="btn_ok_Click" Template="{StaticResource btn_global}" Grid.Row="2" Width="80" HorizontalAlignment="Right" Content="Ок"

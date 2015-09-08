@@ -35,12 +35,39 @@
                     <Label Style="{StaticResource LabelTemplate}" Content="✉ Оповещение о изменении погоды"/>
                     <CheckBox Name="CbNotifications" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
                     <TextBox Name="tbox_email" Style="{StaticResource TextBoxStyle}" BorderThickness="2" BorderBrush="White"/>
-                    <Label Content="Температура" Style="{StaticResource LabelTemplate}"/>
-                    <local:DoubleSlider x:Name="slider_temperature" MouseLeftButtonDown="slider_temperature_MouseLeftButtonUp" Width="auto"/>
-                    <Label Content="Ветер" Style="{StaticResource LabelTemplate}"/>
-                    <local:DoubleSlider x:Name="Wetspeed" Width="auto"/>
-                    <Label Content="Осадки" Style="{StaticResource LabelTemplate}"/>
-                    <CheckBox Name="Cbdownfall" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
+
+                    <GroupBox Header="Температура" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <!--<local:DoubleSlider x:Name="slider_temperature" MouseLeftButtonDown="slider_temperature_MouseLeftButtonUp" Width="auto"/>-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Минимальная: " Style="{StaticResource LabelTemplate}"/>
+                                <TextBox Style="{StaticResource TextBoxStyle}" BorderBrush="Transparent" Grid.Column="1" Background="White" Foreground="#FC007ACC"/>
+                                <Label Grid.Row="1" Content="Максимальная: " Style="{StaticResource LabelTemplate}"/>
+                                <TextBox Style="{StaticResource TextBoxStyle}" BorderBrush="Transparent" Grid.Row="1" Grid.Column="1" Background="White" Foreground="#FC007ACC"/>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Ветер" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <local:DoubleSlider x:Name="Wetspeed" Width="auto"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Осадки" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <CheckBox Name="Cbdownfall" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
+                        </StackPanel>
+                    </GroupBox>
+
                     <Label Content="Город для оповещения" Style="{StaticResource LabelTemplate}"/>
                     <Grid>
                         <Grid.RowDefinitions>

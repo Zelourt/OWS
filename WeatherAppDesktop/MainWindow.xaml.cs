@@ -41,23 +41,12 @@ namespace WeatherAppDesktop
                 ShowInfo sg = new ShowInfo("Ошибка", ex.ToString());
                 sg.ShowDialog();
             }
-
         }
 
         public void CloseWindow()
         {
             this.Close();
         }
-
-        //private void DownloadListCities  ()
-        //{
-        //    reader = new StreamReader("city.list.json");
-        //    CityList = new List<City>();
-        //    while (!reader.EndOfStream)
-        //    {
-        //        CityList.Add(JsonHelper.JsonDeserialize<City>(reader.ReadLine()));
-        //    }
-        //}
 
         public void SetWeatherData(Weather wr)
         {
@@ -144,28 +133,12 @@ namespace WeatherAppDesktop
                     else
                         settingsflyout.CbNotifications.IsChecked = false;
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        //void ShowMap(string location)
-        //{
-        //    string city, country;
-        //    int comaIndex = location.IndexOf(' ');
-        //    country = location.Substring(comaIndex + 1);
-        //    city = location.Remove(comaIndex);
-
-        //    City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
-
-        //    var lat = Convert.ToInt32(cityFound.coord.lat);
-        //    var lon = Convert.ToInt32(cityFound.coord.lon);
-        //    string uri = "http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF";
-        //    webbrawser.brawser.Navigate(uri);
-        //}
 
         void ShowMap(string location)
         {
@@ -176,20 +149,20 @@ namespace WeatherAppDesktop
                 country = location.Substring(comaIndex + 1);
                 city = location.Remove(comaIndex);
 
-                City cityFound = Cities.CityList.First<City>(c => c.name == city | c.country == country);
-                MessageBox.Show(cityFound.name + " " + cityFound.country);
+                City cityFound = Cities.CityList.First<City>(c => c.name == city && c.country == country);
+
                 var lat = Convert.ToInt32(cityFound.coord.lat);
                 var lon = Convert.ToInt32(cityFound.coord.lon);
 
-                MessageBox.Show(lat.ToString() + " " + lon.ToString());
-
-                webbrawser.brawser.Navigate("http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF");
-
+                string uri = "http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF";
+                webbrawser.brawser.Navigate(uri);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ShowInfo sg = new ShowInfo("Ошибка", "Информация о данной локации на сервере отсутствует.");
+                sg.ShowDialog();
             }
+
         }
 
 

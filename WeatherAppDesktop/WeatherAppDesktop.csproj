@@ -158,9 +158,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ResImage\call.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="ResImage\Settings_off.png" />
   </ItemGroup>
   <ItemGroup>
@@ -232,9 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResImage\alert.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ResImage\Lines-background.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ResImage\background-world.png" />
