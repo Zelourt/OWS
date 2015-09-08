@@ -1,0 +1,385 @@
+﻿<Application x:Class="WeatherAppDesktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WeatherAppDesktop"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="Cells" TargetType="Grid">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="ResImage/call.png" Stretch="Uniform" TileMode="None"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GroupBoxStyle" TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+
+        <ControlTemplate x:Key="btn_close" TargetType="{x:Type Button}">
+            <Grid Margin="5">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Close_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Close_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Close_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_res" TargetType="{x:Type Button}">
+            <Grid Margin="5">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Res_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Res_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Res_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_hide" TargetType="{x:Type Button}">
+            <Grid Margin="5">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Hide_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Hide_on.png" Stretch="Uniform" TileMode="None"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Hide_on.png" Stretch="Uniform">
+                            </ImageBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="LabelTemplate" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro" />
+            <Setter Property="FontSize" Value="17"/>
+        </Style>
+
+        <ControlTemplate x:Key="btn_map" TargetType="{x:Type Button}">
+            <Grid Margin="5">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/wmap.png" Stretch="Fill"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="BorderBrush" Value="red">
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="BorderBrush" Value="red">
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_settingsflyout" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Arrow_right_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Arrow_right_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Arrow_right_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_searchflyout" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Arrow_left_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Arrow_left_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Arrow_left_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_searchMirorflyout" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Search_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Search_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Search_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_glassflyout" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/glass_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/glass_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/glass_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_SettingsWindflyout" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Settings_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Settings_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Settings_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="btn_add" TargetType="{x:Type Button}">
+            <Grid Margin="9">
+                <Border x:Name="thebutton" Cursor="Hand">
+                    <Border.Background>
+                        <ImageBrush ImageSource="ResImage/Add_off.png" Stretch="Uniform"/>
+                    </Border.Background>
+                </Border>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Add_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="ResImage/Add_on.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style TargetType="{x:Type CheckBox}" x:Key="myCheckboxStyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="checkboxImage" Source="ResImage/CheckBox_off.png" Width="12"/>
+                            <ContentPresenter/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkboxImage" Property="Source" Value="ResImage/CheckBox_on.png"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsChecked" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <!--<Setter TargetName="checkboxImage" Property="Source" Value="hover.png"/>-->
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#FC007ACC" />
+            <Setter Property="BorderThickness" Value="5,0,0,0" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro"/>
+            <Setter Property="Padding" Value="5,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"  BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Transparent" />
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LeftScrollViewer"
+       TargetType="{x:Type ScrollViewer}">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Background" Value="#33FFFFFF"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="btn_global" TargetType="{x:Type Button}">
+            <Grid>
+                <Border x:Name="thebutton" Background="#33FFFFFF"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="thebutton" Property="Background" Value="#66FFFFFF"/>
+
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="thebutton" Property="Background" Value="#66FFFFFF"/>
+
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+    </Application.Resources>
+
+</Application>

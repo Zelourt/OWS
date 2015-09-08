@@ -1,0 +1,31 @@
+﻿<Window x:Class="WeatherAppDesktop.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherAppDesktop"
+        mc:Ignorable="d"
+        WindowStyle="None" AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Background="#FF007ACC" WindowStartupLocation="CenterScreen"
+        Height="120" Width="400" Icon="ResImage/iconapp.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Label FontFamily="/WeatherAppDesktop;component/ResImage/#Phage Rough KG" Foreground="White"
+               Content="OWS - Open Weather Service" FontSize="20" FontStyle="Italic" VerticalAlignment="Center"/>
+        <ProgressBar BorderBrush="Transparent" Name="progressbar" VerticalAlignment="Center" Margin="5,2,5,2" Height="10" Background="Transparent" Grid.Row="1" Maximum="3" Foreground="White"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Label Name="LbInfo" VerticalAlignment="Center" Style="{StaticResource LabelTemplate}" Content="Загрузка"/>
+            <Button Margin="7,7,5,5" Name="btn_CloseWindow" Click="btn_CloseWindow_Click" Grid.Column="1" Foreground="White" Template="{StaticResource btn_global}" Content="Приступить к работе"/>
+        </Grid>
+        
+    </Grid>
+</Window>

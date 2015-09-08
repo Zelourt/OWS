@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="WeatherAppDesktop.SettingsFlyout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeatherAppDesktop"
+             mc:Ignorable="d"
+             Name="SettingsControl">
+    <!--<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ScrollBar.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>-->
+    <Grid Margin="0,0,0,10">
+        <ScrollViewer Background="#FC007ACC">
+            <StackPanel Margin="5" Grid.Column="0" Name="SettingsStack" Background="#FC007ACC">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Name="btn_back" Click="btn_back_Click" Template="{StaticResource btn_searchflyout}"/>
+
+                    <Label Grid.Column="1" Height="35" Background="#FF007ACC" Content="Настройки" Foreground="White" FontSize="20" FontFamily="/WeatherAppDesktop;component/ResImage/#DeusEx"/>
+
+
+                </Grid>
+
+                <Separator Background="White" Height="5"/>
+
+                <StackPanel Margin="3">
+                    <Label Style="{StaticResource LabelTemplate}" Content="✉ Оповещение о изменении погоды"/>
+                    <CheckBox Name="CbNotifications" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
+                    <TextBox Name="tbox_email" Style="{StaticResource TextBoxStyle}" BorderThickness="2" BorderBrush="White"/>
+                    <Label Content="Температура" Style="{StaticResource LabelTemplate}"/>
+                    <local:DoubleSlider x:Name="slider_temperature" MouseLeftButtonDown="slider_temperature_MouseLeftButtonUp" Width="auto"/>
+                    <Label Content="Ветер" Style="{StaticResource LabelTemplate}"/>
+                    <local:DoubleSlider x:Name="Wetspeed" Width="auto"/>
+                    <Label Content="Осадки" Style="{StaticResource LabelTemplate}"/>
+                    <CheckBox Name="Cbdownfall" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
+                    <Label Content="Город для оповещения" Style="{StaticResource LabelTemplate}"/>
+                    <TextBox Name="TboxCityNotification" Style="{StaticResource TextBoxStyle}" BorderThickness="2" BorderBrush="White"/>
+                    <Button Name="btn_savesettings" Click="btn_savesettings_Click" Margin="0,10,0,0" Height="25" Width="100" FontSize="16" Content="Применить" HorizontalAlignment="Right" Template="{StaticResource btn_global}" Foreground="White" FontFamily="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro"/>
+
+                </StackPanel>
+
+                <Separator Background="White" Height="5"/>
+
+                <!--<StackPanel>
+                    <Label Style="{StaticResource LabelTemplate}" Content="❦ Выбор города"/>
+                    <ListBox BorderThickness="0" Background="Transparent" Name="lb_сities"/>
+                    <Grid Height="40" Background="#33FFFFFF">
+                        <Button Name="btn_AddSity" Click="btn_AddSity_Click" Template="{StaticResource btn_add}"/>
+                    </Grid>
+                    
+                </StackPanel>-->
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
