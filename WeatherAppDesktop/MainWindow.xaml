@@ -6,15 +6,17 @@
         xmlns:local="clr-namespace:WeatherAppDesktop"
         mc:Ignorable="d"
         WindowStyle="None"
-        BorderThickness="4"
-        BorderBrush="#FF007ACC"
-        ResizeMode="CanResizeWithGrip"
+        
+        BorderBrush="Transparent"
+        ResizeMode="CanResize"
         Name="Wind"
-        Height="400" Width="720" MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="ResImage/iconapp.ico">
-    <Window.Background>
-        <ImageBrush ImageSource="ResImage/background.png" Stretch="UniformToFill"/>
-    </Window.Background>
-    <Grid >
+        Background="Transparent"
+        Height="450" Width="750" MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="ResImage/iconapp.ico">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="ResImage/whitebg.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
 
 
 
@@ -27,8 +29,11 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
-        
-        <Label Name="LbWindCityName" Style="{StaticResource LabelTemplate}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+
+        <!--<Border Grid.ColumnSpan="5" Grid.RowSpan="5" BorderThickness="4,0,4,4" BorderBrush="White"/>-->
+
+        <Label Name="LbWindCityName" Style="{StaticResource LabelTemplate}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"
+               Margin="0,0,20,0" Foreground="#FC007ACC"/>
 
         <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2"
                Foreground="White" FontSize="30" Padding="10,2,5,2" HorizontalAlignment="Left"

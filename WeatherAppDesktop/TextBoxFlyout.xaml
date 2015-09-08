@@ -18,9 +18,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <ListBox Background="#66007ACC" Name="LboxSearchCities" Height="auto" VerticalAlignment="Bottom" 
-                     BorderThickness="5,0,0,0" BorderBrush="#FC007ACC" 
-                     MouseDoubleClick="LboxSearchCities_MouseDoubleClick"/>
+            <ListBox  Background="#FF007ACC" Name="LboxSearchCities" Height="auto" VerticalAlignment="Bottom" 
+                     BorderThickness="5,0,0,0" BorderBrush="#065B94" MouseLeftButtonUp="LboxSearchCities_MouseLeftButtonDown"/>
         </Grid>
 
         <Grid Grid.Row="1" Background="#66007ACC">

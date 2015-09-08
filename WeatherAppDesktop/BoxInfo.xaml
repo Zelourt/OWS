@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:WeatherAppDesktop"
              mc:Ignorable="d" 
              x:Name="BoxWeatherInfo">
-    
-    <StackPanel Background="#66007ACC">
-        <Grid Background="#B2007ACC">
-            <Label Foreground="White" Height="30" Content="01.09.2015" Style="{StaticResource LabelTemplate}" 
-                   FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="/WeatherAppDesktop;component/ResImage/#DeusEx"/>
-        </Grid>
 
+    <StackPanel Background="#CC007ACC">
+        <Grid Background="#FF007ACC">
+            <Label Name="LbCurrentDate" Foreground="White" Height="30" Style="{StaticResource LabelTemplate}" 
+                   FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="/WeatherAppDesktop;component/ResImage/#DeusEx"/>
+            <Border BorderThickness="0,0,0,2" BorderBrush="White"/>
+        </Grid>
         <Label Name="LbState" Style="{StaticResource LabelTemplate}"/>
         <Label Name="LbHumidity" Style="{StaticResource LabelTemplate}"/>
         <Label Name="LbTemperature" Style="{StaticResource LabelTemplate}"/>

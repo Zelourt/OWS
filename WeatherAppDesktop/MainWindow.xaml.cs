@@ -35,6 +35,7 @@ namespace WeatherAppDesktop
                 SetWeatherData(wr);
                 ReadSettingsDataXML();
                 searchflyout.SetMainWnd(this);
+                GetWeatherXmlCity();
             }
             catch (Exception ex)
             {
@@ -71,6 +72,30 @@ namespace WeatherAppDesktop
             DataBox.LbSunset.Content = String.Format("Закат: {0} ", wr.Sunset);
             DataBox.LbTemperature.Content = String.Format("Температура: {0} °C", wr.Temperature);
             DataBox.LbPressure.Content = String.Format("Давление: {0} ", wr.Pressure);
+            DataBox.LbCurrentDate.Content = String.Format("{0}", wr.Date);
+        }
+
+        public void GetWeatherXmlCity()
+        {
+            if (System.IO.File.Exists("userSettings.xml"))
+            {
+                var path = "userSettings.xml";
+                XDocument doc = XDocument.Load(path);
+                var doccity = doc.Element("settings").Element("location").Element("city").Value;
+
+                Weather wtp = new Weather();
+                string location = doccity;
+                string city, country;
+                int comaIndex = location.IndexOf(',');
+                country = location.Substring(comaIndex + 1);
+                city = location.Remove(comaIndex);
+
+                City cityFound = сities.CityList.FirstOrDefault<City>(c => c.name == city | c.country == country);
+
+                wtp.GetWeatherById(cityFound._id);
+
+                SetWeatherData(wtp);
+            }
         }
 
         public void ReadSettingsDataXML()
@@ -139,6 +164,7 @@ namespace WeatherAppDesktop
 
             var lat = Convert.ToInt32(cityFound.coord.lat);
             var lon = Convert.ToInt32(cityFound.coord.lon);
+            MessageBox.Show(lat.ToString() + "    " + lon.ToString());
             string uri = "http://openweathermap.org/Maps?zoom=12&lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&layers=B0FTTFF";
             webbrawser.brawser.Navigate(uri);
         }
@@ -248,6 +274,7 @@ namespace WeatherAppDesktop
                 da.Duration = TimeSpan.FromSeconds(0.2);
                 searchflyout.BeginAnimation(Border.WidthProperty, da);
                 IsSearch = true;
+                searchflyout.TbCitySearch.Focus();
             }
             else
             {

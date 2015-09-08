@@ -27,11 +27,13 @@ namespace WeatherAppDesktop
         public int MaxTemperature;
         public int MinWind;
         public int MaxWind;
-
+        Weather wt;
+        MainWindow Mw;
+        public Cities сities;
         public SettingsFlyout()
         {
             InitializeComponent();
-            
+            сities = new Cities();
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -139,6 +141,46 @@ namespace WeatherAppDesktop
         private void btn_savesettings_Click(object sender, RoutedEventArgs e)
         {
             WriteSettingsDataXML();
+        }
+
+        private void TbCitySearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LboxSearchCities.Items.Clear();
+            if (TboxCityNotification.Text.Length > 3)
+            {
+                foreach (var p in сities.CityList)
+                {
+                    if (p.name.Contains(TboxCityNotification.Text))
+                    {
+                        if (!LboxSearchCities.Items.Contains(p.name + ", " + p.country))
+                        {
+                            LboxSearchCities.Items.Add(p.name + ", " + p.country);
+                        }
+                    }
+                }
+
+                //сities.CityList.FindAll(item => item.name.IndexOf(TbCitySearch.Text, StringComparison.InvariantCultureIgnoreCase) >= 0)
+                //    .ForEach(city => LboxSearchCities.Items.Add(city.name + ", " + city.country));
+            }
+        }
+
+        private void LboxSearchCities_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Weather wtp = new Weather();
+                string location = LboxSearchCities.SelectedValue.ToString();
+
+                LboxSearchCities.Items.Clear();
+                TboxCityNotification.Clear();
+                TboxCityNotification.Text = location;
+
+            }
+            catch (Exception ex)
+            {
+                ShowInfo sg = new ShowInfo("Ошибка", ex.ToString());
+                sg.ShowDialog();
+            }
         }
     }
 }

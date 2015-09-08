@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <Label Name="LbHeader" Background="#FF007ACC" Style="{StaticResource LabelTemplate}" FontSize="15"/>
-        <TextBlock Grid.Row="1" FontSize="20" Padding="10"
+        <TextBlock Grid.Row="1" FontSize="16" Padding="10"
                    Foreground="White" FontFamily="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro" Name="TbInfo" TextWrapping="Wrap"/>
         <Button Name="btn_ok" Click="btn_ok_Click" Template="{StaticResource btn_global}" Grid.Row="2" Width="80" HorizontalAlignment="Right" Content="Ок"
                 Foreground="White" FontFamily="/WeatherAppDesktop;component/ResImage/#Ropa Sans Pro" FontSize="15" Margin="7"/>
