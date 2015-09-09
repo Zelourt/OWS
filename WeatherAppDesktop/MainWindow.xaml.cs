@@ -32,6 +32,9 @@ namespace WeatherAppDesktop
                 ReadSettingsDataXML();
                 searchflyout.SetMainWnd(this);
                 GetWeatherXmlCity();
+
+                settingsflyout.Wetspeed.LowerSlider.Minimum = 0;
+                settingsflyout.Wetspeed.UpperSlider.Minimum = 0;
             }
             catch (Exception ex)
             {
