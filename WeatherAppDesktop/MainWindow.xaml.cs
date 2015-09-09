@@ -24,7 +24,7 @@ namespace WeatherAppDesktop
             try
             {
                 StartWindow StWindow = new StartWindow();
-                StWindow.ShowDialog();
+                StWindow.ShowDialog(); 
                 wr = new Weather();
                 InitializeComponent();
                 InitializeDezign();
