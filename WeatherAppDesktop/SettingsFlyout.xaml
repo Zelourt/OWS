@@ -36,27 +36,13 @@
                     <CheckBox Name="CbNotifications" Style="{StaticResource myCheckboxStyle}" Content=" Выключить"/>
                     <TextBox Name="tbox_email" Style="{StaticResource TextBoxStyle}" BorderThickness="2" BorderBrush="White"/>
 
-                    <GroupBox Header="Температура" Style="{StaticResource GroupBoxStyle}">
+                    <GroupBox Header="Температура °C" Style="{StaticResource GroupBoxStyle}">
                         <StackPanel>
-                            <!--<local:DoubleSlider x:Name="slider_temperature" MouseLeftButtonDown="slider_temperature_MouseLeftButtonUp" Width="auto"/>-->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Label Content="Минимальная: " Style="{StaticResource LabelTemplate}"/>
-                                <TextBox Style="{StaticResource TextBoxStyle}" BorderBrush="Transparent" Grid.Column="1" Background="White" Foreground="#FC007ACC"/>
-                                <Label Grid.Row="1" Content="Максимальная: " Style="{StaticResource LabelTemplate}"/>
-                                <TextBox Style="{StaticResource TextBoxStyle}" BorderBrush="Transparent" Grid.Row="1" Grid.Column="1" Background="White" Foreground="#FC007ACC"/>
-                            </Grid>
+                            <local:DoubleSlider x:Name="slider_temperature" Width="auto"/>
                         </StackPanel>
                     </GroupBox>
 
-                    <GroupBox Header="Ветер" Style="{StaticResource GroupBoxStyle}">
+                    <GroupBox Header="Ветер м/с" Style="{StaticResource GroupBoxStyle}">
                         <StackPanel>
                             <local:DoubleSlider x:Name="Wetspeed" Width="auto"/>
                         </StackPanel>

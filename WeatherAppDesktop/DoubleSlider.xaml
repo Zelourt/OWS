@@ -73,7 +73,7 @@
             <Border x:Name="progressBorder" Background="White" BorderThickness="1,5" BorderBrush="#FC007ACC"/>
             <Slider x:Name="LowerSlider" ValueChanged="LowerSlider_ValueChanged"
                 Style="{StaticResource SliderStyle}" Maximum="70" Minimum="-70" />
-            <Slider x:Name="UpperSlider" Value="70"
+            <Slider x:Name="UpperSlider" ValueChanged="UpperSlider_ValueChanged"
                 Style="{StaticResource SliderStyle}" Maximum="70" Minimum="-70"/>
         </Grid>
         <Grid Grid.Row="1">
@@ -82,8 +82,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label Name="MaxValue" Content="Max: 6°C" Grid.Column="1" Foreground="White" Style="{StaticResource LabelTemplate}" />
-            <Label Name="MinValue" Content="Min: 2°C" Grid.Column="0" Foreground="White" Style="{StaticResource LabelTemplate}" />
+            <Label Name="MaxValue" Content="Max: 0" Grid.Column="1" Foreground="White" Style="{StaticResource LabelTemplate}" />
+            <Label Name="MinValue" Content="Min: 0" Grid.Column="0" Foreground="White" Style="{StaticResource LabelTemplate}" />
         </Grid>
         
     </Grid>

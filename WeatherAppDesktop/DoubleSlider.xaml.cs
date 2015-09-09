@@ -20,6 +20,8 @@ namespace WeatherAppDesktop
     /// </summary>
     public partial class DoubleSlider : UserControl
     {
+        public int MaxCurrent { get; set; }
+        public int MinCurrent { get; set; }
         public DoubleSlider()
         {
             InitializeComponent();
@@ -29,9 +31,16 @@ namespace WeatherAppDesktop
         {
             //MessageBox.Show(Convert.ToInt32(LowerSlider.Value).ToString());
             //slider_temperature
-            //int value = Convert.ToInt32(LowerSlider.Value);
-            //MinValue.Content = String.Format("Min: {0}°C", value.ToString());
+            int minvalue = Convert.ToInt32(LowerSlider.Value);
+            MinValue.Content = String.Format("Min: {0}", minvalue.ToString());
+            MinCurrent = minvalue;
         }
 
+        private void UpperSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int maxvalue = Convert.ToInt32(UpperSlider.Value);
+            MaxValue.Content = String.Format("Max: {0}", maxvalue.ToString());
+            MaxCurrent = maxvalue;
+        }
     }
 }

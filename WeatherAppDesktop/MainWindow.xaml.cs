@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -109,16 +106,20 @@ namespace WeatherAppDesktop
                         settingsflyout.tbox_email.Text = email;
 
                         var maxtemperature = doc.Element("settings").Element("notification").Element("maxtemperature").Value;
-                        //numericTemperature.Value = Convert.ToDouble(maxtemperature);
+                        settingsflyout.slider_temperature.MaxCurrent = Convert.ToInt32(maxtemperature);
+                        settingsflyout.slider_temperature.UpperSlider.Value = Convert.ToInt32(maxtemperature);
 
                         var mintemperature = doc.Element("settings").Element("notification").Element("mintemperature").Value;
-                        //numericTemperature.Value = Convert.ToDouble(mintemperature);
+                        settingsflyout.slider_temperature.MinCurrent = Convert.ToInt32(mintemperature);
+                        settingsflyout.slider_temperature.LowerSlider.Value = Convert.ToInt32(mintemperature);
 
                         var maxwind = doc.Element("settings").Element("notification").Element("maxwind").Value;
-                        //numericHumidity.Value = Convert.ToDouble(maxwind);
+                        settingsflyout.Wetspeed.MaxCurrent = Convert.ToInt32(maxwind);
+                        settingsflyout.Wetspeed.UpperSlider.Value = Convert.ToInt32(maxwind);
 
                         var minwind = doc.Element("settings").Element("notification").Element("minwind").Value;
-                        //numericHumidity.Value = Convert.ToDouble(minwind);
+                        settingsflyout.Wetspeed.MinCurrent = Convert.ToInt32(minwind);
+                        settingsflyout.Wetspeed.LowerSlider.Value = Convert.ToInt32(minwind);
 
                         var downfall = doc.Element("settings").Element("notification").Element("downfall").Value;
                         if (downfall == "true")

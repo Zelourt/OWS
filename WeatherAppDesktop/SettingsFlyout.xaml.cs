@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml.Linq;
 
 namespace WeatherAppDesktop
@@ -23,17 +13,9 @@ namespace WeatherAppDesktop
     public partial class SettingsFlyout : UserControl
     {
         DoubleAnimation da;
-        public int MinTemperature;
-        public int MaxTemperature;
-        public int MinWind;
-        public int MaxWind;
-        Weather wt;
-        MainWindow Mw;
-        public Cities сities;
         public SettingsFlyout()
         {
             InitializeComponent();
-            сities = new Cities();
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -71,16 +53,16 @@ namespace WeatherAppDesktop
                     notificationIsEnable.Value = "true";
 
                     XElement mintemperature = new XElement("mintemperature");
-                    mintemperature.Value = MinTemperature.ToString();
+                    mintemperature.Value = slider_temperature.MinCurrent.ToString();
 
                     XElement maxtemperature = new XElement("maxtemperature");
-                    maxtemperature.Value = MaxTemperature.ToString();
+                    maxtemperature.Value = slider_temperature.MaxCurrent.ToString();
 
                     XElement minwind = new XElement("minwind");
-                    minwind.Value = MinWind.ToString();
+                    minwind.Value = Wetspeed.MinCurrent.ToString();
 
                     XElement maxwind = new XElement("maxwind");
-                    maxwind.Value = MaxWind.ToString();
+                    maxwind.Value = Wetspeed.MaxCurrent.ToString();
 
                     XElement downfall = new XElement("downfall");
                     if (Cbdownfall.IsChecked == true)
